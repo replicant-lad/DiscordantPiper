@@ -22,7 +22,7 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    if bool(re.search(r'\[\[([A-Za-z0-9_ ]+)\]\]',message.content)) == True:
+    if bool(re.search(r'\[\[([A-Za-z0-9_ ,-:/]+)\]\]',message.content)) == True:
         print(f'Identified one or more scryfall queries')
         await scryfall_query(message)
 

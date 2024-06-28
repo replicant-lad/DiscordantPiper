@@ -6,10 +6,11 @@ async def scryfall_query(message):
 
     card_images : list = []
 
-    card_queries = re.findall(r'\[\[([A-Za-z0-9_ ]+)\]\]', message.content)
+    card_queries = re.findall(r'\[\[([A-Za-z0-9_ ,-:/]+)\]\]', message.content)
 
 
     for card in card_queries:
+        print(card)
         card_get = loads(get(f"https://api.scryfall.com/cards/search?q={card}").text)
         try:
             card_images.append(card_get['data'][0]['image_uris']['png'])
